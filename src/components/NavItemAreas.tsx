@@ -1,24 +1,25 @@
 "use client";
 
-import { AREA_TO_COUNTRY_CODE } from "@/data/constants";
+import { AREA_TO_COUNTRY_CODE, Area } from "@/data/constants";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-type Area = {
+// 👇 this is the API structure for each item
+type AreaAPI = {
   strArea: string;
 };
 
 type AreasProps = {
-  areas: Area[];
+  areas: AreaAPI[];
   showToggle: boolean;
   expanded: boolean;
   onToggle: () => void;
 };
 
 export default function NavItemAreas() {
-  const [areas, setAreas] = useState<Area[]>([]);
+  const [areas, setAreas] = useState<AreaAPI[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [hasFetched, setHasFetched] = useState(false);
@@ -80,23 +81,24 @@ export default function NavItemAreas() {
 function Areas({ areas, showToggle, expanded, onToggle }: AreasProps) {
   return (
     <>
-      {areas.map((area, index) => (
-        <Link
-          href={`/area/${area.strArea}`}
-          key={index}
-          className="flex gap-2 items-center px-2 py-1 bg-white hover:bg-orange-50 dark:hover:bg-[#2a2a2a] rounded-md cursor-pointer"
-        >
-          <Image
-            src={`https://www.themealdb.com/images/icons/flags/big/32/${
-              AREA_TO_COUNTRY_CODE[area.strArea]
-            }.png`}
-            alt={area.strArea}
-            width={32}
-            height={32}
-          />
-          {area.strArea}
-        </Link>
-      ))}
+      {areas.map((area, index) => {
+        const code = AREA_TO_COUNTRY_CODE[area.strArea as Area] || "unknown";
+        return (
+          <Link
+            href={`/area/${area.strArea}`}
+            key={index}
+            className="flex gap-2 items-center px-2 py-1 bg-white hover:bg-orange-50 dark:hover:bg-[#2a2a2a] rounded-md cursor-pointer"
+          >
+            <Image
+              src={`https://www.themealdb.com/images/icons/flags/big/32/${code}.png`}
+              alt={area.strArea}
+              width={32}
+              height={32}
+            />
+            {area.strArea}
+          </Link>
+        );
+      })}
 
       {showToggle && (
         <p
