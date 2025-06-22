@@ -1,6 +1,37 @@
 export const APP_NAME: string = "MealPlanner";
 
-export const AREA_TO_COUNTRY_CODE: any = {
+export type Area =
+  | "American"
+  | "British"
+  | "Canadian"
+  | "Chinese"
+  | "Croatian"
+  | "Dutch"
+  | "Egyptian"
+  | "Filipino"
+  | "French"
+  | "Greek"
+  | "Indian"
+  | "Irish"
+  | "Italian"
+  | "Jamaican"
+  | "Japanese"
+  | "Kenyan"
+  | "Malaysian"
+  | "Mexican"
+  | "Moroccan"
+  | "Polish"
+  | "Portuguese"
+  | "Russian"
+  | "Spanish"
+  | "Thai"
+  | "Tunisian"
+  | "Turkish"
+  | "Ukrainian"
+  | "Uruguayan"
+  | "Vietnamese";
+
+export const AREA_TO_COUNTRY_CODE: Record<Area, string> = {
   American: "us",
   British: "gb",
   Canadian: "ca",
