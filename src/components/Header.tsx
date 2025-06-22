@@ -1,14 +1,10 @@
 import { APP_NAME } from "@/data/constants";
-import { ChefHat, ChevronDown, Search, User } from "lucide-react";
+import { ChefHat, Search, User } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import NavItemAreas from "./NavItemAreas";
 
-type Props = {};
-
-export default function Header(props: Props) {
-  const {} = props;
-
+export default function Header() {
   return (
     <header className="flex justify-between items-center px-[5vw] py-4">
       <Link href={"/"} className="flex gap-1 items-center">

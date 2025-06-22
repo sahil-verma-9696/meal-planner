@@ -1,8 +1,7 @@
 import React from "react";
 
-type Props = {};
 
-export default function page({}: Props) {
+export default function page() {
   return (
     <main>
       <h1 className="text-center text-4xl font-bold py-6">Recipe Categories</h1>
