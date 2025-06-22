@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 type Meal = {
   idMeal: string;
@@ -60,10 +61,11 @@ export default function Featured() {
             : meals.map((meal) => (
                 <Link href={`/meal/${meal.idMeal}`} key={meal.idMeal}>
                   <div className="bg-white dark:bg-[#1c1c1c] shadow-lg hover:shadow-xl transition duration-300 rounded-lg overflow-hidden cursor-pointer">
-                    <img
+                    <Image
                       src={meal.strMealThumb}
                       alt={meal.strMeal}
-                      className="w-full h-48 object-cover"
+                      width={320}
+                      height={200}
                     />
                     <div className="p-4">
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white">

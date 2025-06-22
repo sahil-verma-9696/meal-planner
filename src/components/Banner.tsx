@@ -1,9 +1,8 @@
 import { Calendar, ChefHat } from "lucide-react";
 import React from "react";
 
-type Props = {};
 
-export default function Banner({}: Props) {
+export default function Banner() {
   return (
     <div className="bg-[#fff5ef] p-10">
       <h1 className="text-center text-5xl py-8 font-bold">
